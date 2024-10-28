@@ -23,11 +23,11 @@ export default function MainComponent() {
     },
   ];
   const [expanded , setExpanded] = useState(false);
-  const [checkedmenuitem , setCheckedMenuItem] = useState<string>("");
+  const [checkedmenuitem , setCheckedMenuItem] = useState<string | null>(null);
   const handleCheckedMenuItem = (e: ClickEventHandler<HTMLLIElement>) => {
     const value = e.target.getAttribute('data-value');
     console.log(value);
-    setCheckedMenuItem(value);
+    setCheckedMenuItem(prev => (prev === value ? null : value));
     setExpanded(!expanded);
 };
   return (
