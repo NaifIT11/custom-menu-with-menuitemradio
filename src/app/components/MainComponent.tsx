@@ -23,6 +23,7 @@ export default function MainComponent() {
     },
   ];
   const [expanded , setExpanded] = useState(false);
+  const [checkedmenuitem , setCheckedMenuItem] = useState(false);
   return (
     <div className="relative p-4 border">
       <button
@@ -44,12 +45,12 @@ export default function MainComponent() {
           <li
             key={menuitem.value}
             role="menuitemradio"
-            aria-checked="false"
-            data-checked="true"
+            aria-checked={checkedmenuitem}
+            data-checked={checkedmenuitem}
             aria-label={`${menuitem.name} menu item`}
-            className="cursor-pointer flex items-center gap-3 rounded p-3 hover:bg-white"
+            className="cursor-pointer flex data-[checked=true]:bg-white [&[data-checked=true] > svg]:opacity-100 items-center gap-3 rounded p-3 hover:bg-white"
           >
-            <Check className="w-4 h-4" />
+            <Check className="w-4 h-4 opacity-0" />
             <span>{menuitem.value}</span>
           </li>
         ))}
