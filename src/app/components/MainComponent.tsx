@@ -24,6 +24,11 @@ export default function MainComponent() {
   ];
   const [expanded , setExpanded] = useState(false);
   const [checkedmenuitem , setCheckedMenuItem] = useState(false);
+  const handleCheckedMenuItem = (e: Event) => {
+    const target = e.target as HTMLInputElement;
+    const value = target.getAttribute('data-value');
+    console.log(value);
+};
   return (
     <div className="relative p-4 border">
       <button
@@ -38,6 +43,7 @@ export default function MainComponent() {
       <ul
         role="menu"
         id="sort-menu"
+        aria-label="Sort By Menu Item"
         data-expanded={expanded}
         className="absolute data-[expanded=true]:block data-[expanded=false]:hidden flex flex-col left-[90px] z-[9999] p-4 bg-slate-100 text-blue-500 rounded"
       >
@@ -47,6 +53,8 @@ export default function MainComponent() {
             role="menuitemradio"
             aria-checked={checkedmenuitem}
             data-checked={checkedmenuitem}
+            data-value={menuitem.value}
+            onClick={handleCheckedMenuItem}
             aria-label={`${menuitem.name} menu item`}
             className="cursor-pointer flex data-[checked=true]:bg-white [&[data-checked=true] > svg]:opacity-100 items-center gap-3 rounded p-3 hover:bg-white"
           >
