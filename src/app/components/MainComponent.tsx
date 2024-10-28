@@ -18,6 +18,7 @@ export default function MainComponent() {
 
   const handleCheckedMenuItem = (e: React.MouseEvent<HTMLLIElement>) => {
     const value = e.currentTarget.getAttribute('data-value');
+    console.log(value);
     if (checkedMenuItem !== value) {
       setCheckedMenuItem(value!);
     }
@@ -56,7 +57,7 @@ export default function MainComponent() {
         aria-haspopup="menu"
         aria-expanded={expanded}
         onClick={() => setExpanded(!expanded)}
-        className="px-4 py-2 rounded bg-slate-100 text-blue-500 font-medium"
+        className="px-4 active:animate-[button-popup_1s_ease-in-out] py-2 rounded bg-slate-100 text-blue-500 font-medium"
       >
         Sort by
       </button>
@@ -75,11 +76,12 @@ export default function MainComponent() {
               key={menuitem.value}
               role="menuitemradio"
               aria-checked={checkedMenuItem === menuitem.value}
+              data-checked={checkedMenuItem === menuitem.value}
               data-value={menuitem.value}
               onClick={handleCheckedMenuItem}
-              tabIndex={0} // Set to 0 for keyboard focus
+              tabIndex={0}
               aria-label={`${menuitem.name} menu item`}
-              className={`cursor-pointer focus-visible:ring-2 ring-offset-2 ring-blue-500 flex items-center gap-3 rounded p-3 hover:bg-white ${highlightedIndex === index ? 'bg-gray-200' : ''}`} // Highlight the focused item
+              className={`cursor-pointer active:animate-[button-popup_1s_ease-in-out] data-[]focus-visible:ring-2 ring-offset-2 ring-blue-500 flex items-center gap-3 rounded p-3 hover:bg-white ${highlightedIndex === index ? 'bg-gray-200' : ''}`}
             >
               <Check className={`w-4 h-4 ${checkedMenuItem === menuitem.value ? 'opacity-100' : 'opacity-0'}`} />
               <span>{menuitem.name}</span>
