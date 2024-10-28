@@ -59,7 +59,7 @@ export default function MainComponent() {
             aria-label={`${menuitem.name} menu item`}
             className="cursor-pointer flex data-[checked=true]:bg-white items-center gap-3 rounded p-3 hover:bg-white"
           >
-            <Check data-checked={checkedmenuitem} className="w-4 h-4 data-[checked=true]:opacity-0 data-[checked=true]:opacity-100" />
+            <Check data-checked={checkedmenuitem === menuitem.value} className="w-4 h-4 data-[checked=false]:opacity-0 data-[checked=true]:opacity-100" />
             <span>{menuitem.value}</span>
           </li>
         ))}
