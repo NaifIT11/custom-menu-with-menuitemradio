@@ -23,13 +23,11 @@ export default function MainComponent() {
     },
   ];
   const [expanded , setExpanded] = useState(false);
-  const [checkedmenuitem , setCheckedMenuItem] = useState(false);
-  const handleCheckedMenuItem = (e: Event) => {
-    const target = e.target as HTMLInputElement;
-    const value = target.getAttribute('data-value');
+  const [checkedmenuitem , setCheckedMenuItem] = useState<string>("");
+  const handleCheckedMenuItem = (e: ClickEventHandler<HTMLLIElement>) => {
+    const value = e.target.getAttribute('data-value');
     console.log(value);
-
-    setCheckedMenuItem(!checkedmenuitem);
+    setCheckedMenuItem(value);
     setExpanded(!expanded);
 };
   return (
@@ -54,12 +52,12 @@ export default function MainComponent() {
           <li
             key={menuitem.value}
             role="menuitemradio"
-            aria-checked={checkedmenuitem}
-            data-checked={checkedmenuitem}
+            aria-checked={checkedmenuitem === menuitem.value}
+            data-checked={checkedmenuitem === menuitem.value}
             data-value={menuitem.value}
             onClick={handleCheckedMenuItem}
             aria-label={`${menuitem.name} menu item`}
-            className="cursor-pointer flex data-[checked=true]:bg-whiteitems-center gap-3 rounded p-3 hover:bg-white"
+            className="cursor-pointer flex data-[checked=true]:bg-white items-center gap-3 rounded p-3 hover:bg-white"
           >
             <Check data-checked={checkedmenuitem} className="w-4 h-4 data-[checked=true]:opacity-0 data-[checked=true]:opacity-100" />
             <span>{menuitem.value}</span>
