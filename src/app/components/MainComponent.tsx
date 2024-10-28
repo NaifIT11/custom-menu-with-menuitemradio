@@ -29,6 +29,7 @@ export default function MainComponent() {
         aria-controls="sort-menu"
         aria-haspopup="menu"
         aria-expanded={expanded}
+        onClick={() => setExpanded(!expanded)}
         className="px-4 py-2 rounded bg-slate-100 text-blue-500 font-medium"
       >
         sort by
@@ -37,7 +38,7 @@ export default function MainComponent() {
         role="menu"
         id="sort-menu"
         data-expanded={expanded}
-        className="absolute data-[expanded=true]:block data-[expanded=false]:block flex flex-col left-[90px] z-[9999] p-4 bg-slate-100 text-blue-500 rounded"
+        className="absolute data-[expanded=true]:block data-[expanded=false]:hidden flex flex-col left-[90px] z-[9999] p-4 bg-slate-100 text-blue-500 rounded"
       >
         {menuitemradios.map((menuitem) => (
           <li
