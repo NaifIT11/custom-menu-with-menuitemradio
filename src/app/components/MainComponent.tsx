@@ -34,7 +34,7 @@ export default function MainComponent() {
       <ul
         role="menu"
         id="sort-menu"
-        className="absolute left-[90px] z-[9999] p-4 bg-slate-100 text-blue-500 rounded"
+        className="absolute flex flex-col left-[90px] z-[9999] p-4 bg-slate-100 text-blue-500 rounded"
       >
         {menuitemradios.map((menuitem) => (
           <li
@@ -43,7 +43,7 @@ export default function MainComponent() {
             aria-checked="false"
             data-checked="true"
             aria-label={`${menuitem.name} menu item`}
-            className="cursor-pointer flex items-center gap-3"
+            className="cursor-pointer flex items-center gap-3 rounded p-3 hover:bg-white"
           >
             <Check className="w-4 h-4" />
             <span>{menuitem.value}</span>
