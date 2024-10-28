@@ -28,6 +28,9 @@ export default function MainComponent() {
     const target = e.target as HTMLInputElement;
     const value = target.getAttribute('data-value');
     console.log(value);
+
+    setCheckedMenuItem(!checkedmenuitem);
+    setExpanded(!expanded);
 };
   return (
     <div className="relative p-4 border">
@@ -56,9 +59,9 @@ export default function MainComponent() {
             data-value={menuitem.value}
             onClick={handleCheckedMenuItem}
             aria-label={`${menuitem.name} menu item`}
-            className="cursor-pointer flex data-[checked=true]:bg-white [&[data-checked=true] > svg]:opacity-100 items-center gap-3 rounded p-3 hover:bg-white"
+            className="cursor-pointer flex data-[checked=true]:bg-whiteitems-center gap-3 rounded p-3 hover:bg-white"
           >
-            <Check className="w-4 h-4 opacity-0" />
+            <Check data-checked={checkedmenuitem} className="w-4 h-4 data-[checked=true]:opacity-0 data-[checked=true]:opacity-100" />
             <span>{menuitem.value}</span>
           </li>
         ))}
