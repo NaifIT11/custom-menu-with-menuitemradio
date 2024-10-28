@@ -23,11 +23,13 @@ export default function MainComponent() {
     },
   ];
   const [expanded , setExpanded] = useState(false);
-  const [checkedmenuitem , setCheckedMenuItem] = useState<string | null>(null);
+  const [checkedmenuitem , setCheckedMenuItem] = useState<string>(menuitemradios[0].value);
   const handleCheckedMenuItem = (e: ClickEventHandler<HTMLLIElement>) => {
     const value = e.target.getAttribute('data-value');
     console.log(value);
-    setCheckedMenuItem(prev => (prev === value ? null : value));
+    if (checkedmenuitem !== value) {
+        setCheckedMenuItem(value);
+      }
     setExpanded(!expanded);
 };
   return (
